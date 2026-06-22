@@ -28,6 +28,7 @@ requirements document at `docs/user-requirements.md`.
 ## Conventions
 
 - Documentation lives in `docs/`.
+- Implementation decisions and technical architecture live in `docs/architecture.md` (kept strictly separate from requirements).
 - Keep the requirements doc structured as **Part I (system-wide)** then **Part II
   (per-domain)**, with each domain inheriting the shared shelf described in Part I.
 - Unresolved points are flagged inline as `**[OPEN]**`.
