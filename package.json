@@ -1,9 +1,22 @@
 {
   "name": "personal-agent",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Multi-domain personal agent + glanceable surface. See docs/.",
   "scripts": {
-    "check": "node --check prototype/scriptable/glance-widget.js && node --check prototype/scriptable/glance-app.js"
+    "start": "node server/src/index.js",
+    "test": "node --test",
+    "lint": "eslint .",
+    "check": "npm run lint && npm test && node --check prototype/scriptable/glance-widget.js && node --check prototype/scriptable/glance-app.js && node --check prototype/scriptable/glance-chat.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.69.0",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "eslint": "^9.18.0",
+    "globals": "^15.14.0"
   }
 }
