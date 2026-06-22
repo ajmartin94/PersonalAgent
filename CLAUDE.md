@@ -25,6 +25,20 @@ requirements document at `docs/user-requirements.md`.
 - **Requirements docs contain no implementation detail.** No tech stack, no
   architecture, no specific apps/platforms named as requirements.
 
+## Git & engineering workflow
+
+- **Never push to `main` directly.** All changes land on `main` through a pull
+  request — branch, push the branch, open a PR, merge. No exceptions, even for docs.
+- **Use feature branches.** Branch off `main` for any unit of work (e.g.
+  `feature/<name>`); keep the branch focused.
+- **Commit often.** Prefer small, frequent, logically-scoped commits with clear
+  messages over large infrequent ones. A commit should leave the tree in a coherent
+  state.
+- **Linting and programmatic tests are the prime path.** Verify changes with linters
+  and automated tests first; treat manual/visual checks as a supplement, not the
+  primary signal. Add or update tests alongside the code they cover, and keep lint +
+  tests green before opening or merging a PR.
+
 ## Conventions
 
 - Documentation lives in `docs/`.
