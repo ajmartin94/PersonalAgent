@@ -26,9 +26,35 @@ Anticipated future domains: calendar, email, health/fitness, travel/documents.
 - **Proactive, not noisy** — it reaches out the way I want it to, under my control.
 - **One brain, many domains** — extensible by design.
 
+## Running the MVP
+
+A functional prototype lives in this repo (see [`docs/architecture.md`](docs/architecture.md)).
+
+**Backend** (Node 18+):
+
+```sh
+npm install
+npm run check          # lint + tests + widget syntax checks (the prime verification path)
+export ANTHROPIC_API_KEY=sk-ant-...   # optional — enables the conversational agent
+npm start              # serves http://localhost:3000
+```
+
+Key endpoints: `GET /api/glance` (the surface's cards), `GET /api/kitchen/plan` ·
+`/api/news` · `/api/finance/summary` · `/api/projects`, `POST /api/chat`,
+`POST /api/capture`. Without an API key the deterministic endpoints and keyword-based
+capture still work; only the live conversation needs the key.
+
+**Glanceable surface** (free Scriptable app on iPhone) — the scripts in
+[`prototype/scriptable/`](prototype/scriptable/) fetch live data from the backend:
+the home/lock-screen widget (`glance-widget.js`), the full-screen app mockup
+(`glance-app.js`), and a working conversational client (`glance-chat.js`). See that
+folder's README for install and how to point the scripts at your server.
+
 ## Status
 
-Early definition. The current artifact is the user requirements document:
+Early definition graduating into a functional MVP. Key artifacts:
 
 - [`docs/user-requirements.md`](docs/user-requirements.md) — user-facing functionality
   and experience only (no implementation detail).
+- [`docs/architecture.md`](docs/architecture.md) — implementation decisions (test
+  architecture, MVP backend).
