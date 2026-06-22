@@ -2,12 +2,16 @@
 
 Stage 0 prototype per [`docs/architecture.md`](../../docs/architecture.md) (Decision 001).
 
-**What this is:** a *visual-only* glanceable widget you can run on your iPhone to feel
-the multi-domain "cards at a glance" pattern. It shows mock data for five domains
-(dinner, spending, markets, top story, project nudge).
+**What this is:** the glanceable surface for the Personal Agent MVP. The scripts fetch
+**live data** from the backend (`server/`) and also work offline with mock data:
 
-**What this is NOT:** there is no backend, no live data, and no real functionality —
-all values are hardcoded placeholders. This exists purely to test the visual pattern.
+- `glance-widget.js` — home/lock-screen widget showing the five domain cards.
+- `glance-app.js` — full-screen dashboard (live cards) + a chat preview.
+- `glance-chat.js` — a **working** conversational client that posts to `/api/chat`.
+
+If the server is unreachable the widget/app fall back to mock data so the surface always
+renders. Start with the backend (repo root `README.md` → Running the MVP), then point the
+scripts at it via `BASE_URL` (below).
 
 ---
 
@@ -54,6 +58,26 @@ toggle so you can see both views.
    **Glance App** script with "When Interacting" = **Run Script** — tapping it opens the
    mockup. *(Wiring the glance widget itself to deep-link into this screen is a Stage 1
    nicety; for now run the two scripts independently.)*
+
+## Connect to the live backend
+
+Each script has a `BASE_URL` constant near the top (default `http://localhost:3000`).
+
+- **Same machine (preview in Scriptable on a Mac simulator / testing):** leave it as
+  `localhost`.
+- **On your iPhone:** set it to the server's **LAN IP** — e.g. `http://192.168.1.20:3000`
+  (find it with `ipconfig getifaddr en0` on macOS). The phone and the server must be on
+  the same Wi-Fi. `localhost` on the phone refers to the phone itself and won't reach your
+  server.
+
+Then:
+
+1. **Widget** — install `glance-widget.js` as a Home/Lock Screen widget (steps above). It
+   shows "live data" in the footer when it reached the server, "mock data" when offline.
+2. **Conversational agent** — paste `glance-chat.js` into a new Scriptable script named
+   **Glance Chat**, run it, and type a question ("how's grocery spending?", "add 'paint the
+   floor' to the garage list"). It posts to `/api/chat`; the agent answers using live data.
+   *(The server must be running with `ANTHROPIC_API_KEY` set for the conversation to work.)*
 
 ## Notes
 
