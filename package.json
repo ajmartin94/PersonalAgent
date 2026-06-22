@@ -4,6 +4,6 @@
   "private": true,
   "description": "Multi-domain personal agent + glanceable surface. See docs/.",
   "scripts": {
-    "check": "node --check prototype/scriptable/glance-widget.js"
+    "check": "node --check prototype/scriptable/glance-widget.js && node --check prototype/scriptable/glance-app.js"
   }
 }

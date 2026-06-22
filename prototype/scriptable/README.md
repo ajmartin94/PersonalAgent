@@ -39,6 +39,22 @@ matter here.
 
 ---
 
+## Run the main-app screen mockup ([`glance-app.js`](./glance-app.js))
+
+This is the full-screen experience you'd tap into from the widget: a richer dashboard
+plus the conversational-agent (chat + voice) UI. It's a visual mockup rendered in a
+full-screen WebView — mock data only, the only interaction is the **Glance / Chat**
+toggle so you can see both views.
+
+1. In Scriptable, tap **+** to make another new script; paste the contents of
+   [`glance-app.js`](./glance-app.js); rename it to **Glance App** → Done.
+2. Tap the **▶︎ play** button to launch it full-screen. Tap **Glance** / **Chat** at the
+   top to switch views. Swipe down / Done to dismiss.
+3. *(Optional, to launch it from the Home Screen):* add a Scriptable widget set to the
+   **Glance App** script with "When Interacting" = **Run Script** — tapping it opens the
+   mockup. *(Wiring the glance widget itself to deep-link into this screen is a Stage 1
+   nicety; for now run the two scripts independently.)*
+
 ## Notes
 
 - **Both phones:** repeat steps 1–4 on your wife's iPhone (install the free app, paste
